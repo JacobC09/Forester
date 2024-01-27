@@ -17,6 +17,7 @@ private:
 
 namespace factory
 {
-    entt::entity newPlayer(GameState &game);
+    entt::entity newPlayer(GameState &game, float x, float y);
     entt::entity newRock(GameState &game, float x, float y);
+    entt::entity newTree(GameState &game, float x, float y);
 }

@@ -13,26 +13,32 @@ inline entt::entity EntityBuilder::build() {
 
 // Player
 
-entt::entity factory::newPlayer(GameState &game) {
-    AnimationPlayer animations = AnimationPlayer({
-        {Player::Idle, Animation {Textures::PlayerIdle, {0, 0, 96, 64}, 8, 9}},
-        {Player::Run, Animation {Textures::PlayerRun, {0, 0, 96, 64}, 4, 8}},
-    }, Player::Idle);
-
+entt::entity factory::newPlayer(GameState &game, float x, float y) {
     return EntityBuilder(game.reg)
-        .add<Player>(2.0f, animations, false)
-        .add<Position>(64.0f, 64.0f)
+        .add<Player>()
+        .add<Position>(x, y)
         .add<Collider>(42, 32, 14, 10)
         .add<Physics>(0.0f, 0.0f)
+        .add<Shadow>(Textures::Shadow, (unsigned char) 100)
         .add<Render>(&render::drawPlayer)
         .build();
 }   
 
 entt::entity factory::newRock(GameState &game, float x, float y) {
     return EntityBuilder(game.reg)
-        .add<Rock>()
+        .add<Rock>(GetRandomValue(0, Rock::maxTypes))
         .add<Position>(x, y)
-        .add<Collider>(0, 0, 16, 16)
+        .add<Collider>(0, 8, 16, 8)
         .add<Render>(&render::drawRock)
         .build();
 }   
+
+entt::entity factory::newTree(GameState &game, float x, float y) {
+    return EntityBuilder(game.reg)
+        .add<Tree>()
+        .add<Position>(x, y)
+        .add<Collider>(10, 24, 12, 8)
+        .add<Render>(&render::drawTree)
+        .build();
+}   
+

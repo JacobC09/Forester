@@ -1,0 +1,38 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "main.tmx",
+    "expandedProjectPaths": [
+        ".",
+        "Templates"
+    ],
+    "fileStates": {
+        "main.tmx": {
+            "scale": 4,
+            "selectedLayer": 1,
+            "viewCenter": {
+                "x": 187.5,
+                "y": 126.5
+            }
+        },
+        "tiles.tsx": {
+            "scaleInDock": 4,
+            "scaleInEditor": 3
+        }
+    },
+    "last.imagePath": "C:/Users/jakec/Documents/Games/game/assets/Graphics/Tilesets",
+    "last.objectTemplatePath": "C:/Users/jakec/Documents/Games/game/assets/Map/Templates",
+    "map.lastUsedFormat": "tmx",
+    "openFiles": [
+        "main.tmx",
+        "tiles.tsx"
+    ],
+    "project": "project.tiled-project",
+    "recentFiles": [
+        "main.tmx",
+        "tiles.tsx"
+    ],
+    "tileset.lastUsedFormat": "tsx"
+}

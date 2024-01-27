@@ -1,21 +1,24 @@
 #pragma once
 #include <map>
 #include "raylib.h"
-#include "textures.h"
+#include "assets.h"
 
 struct Animation {
     Animation() = default;
-    Animation(Textures texture, Rectangle startFrame, int frameDur, int totalFrames)
-        : texture(texture), startFrame(startFrame), frameDur(frameDur), totalFrames(totalFrames), timer(0) {};
+    Animation(Textures texture, Rectangle startFrame, int frameDur, int totalFrames, bool repeating=true)
+        : texture(texture), startFrame(startFrame), frameDur(frameDur), 
+          totalFrames(totalFrames), timer(0), repeating(repeating) {};
 
     int timer;
     int frameDur;
     int totalFrames;
+    bool repeating;
     Rectangle startFrame;
     Textures texture;
 
     void update();
     void reset();
+    bool isFinished();
     Rectangle getFrame();
 };
 

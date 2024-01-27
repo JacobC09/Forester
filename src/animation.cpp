@@ -1,13 +1,20 @@
 #include "animation.h"
 
 void Animation::update() {
+    if (timer >= totalFrames * frameDur) {
+        if (repeating)
+            reset();
+        return;
+    }
     timer++;
-    if (timer > totalFrames * frameDur)
-        reset();
 }
 
 void Animation::reset() {
     timer = 0;
+}
+
+bool Animation::isFinished() {
+    return timer >= totalFrames * frameDur;
 }
 
 Rectangle Animation::getFrame() {

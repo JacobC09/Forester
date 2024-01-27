@@ -8,15 +8,15 @@ inline void print() {
 
 template<typename T>
 inline void print(std::vector<T> vector) {
-    std::string output = "{";
+    std::cout << "{";
     for (int i = 0; i < vector.size(); i++) {
-        output += vector[i] + (i == vector.size() - 1 ? "}" : ", ");
+        std::cout << vector[i] << (i == vector.size() - 1 ? "}" : ", ");
     }
     
     if (!vector.size()) 
-        output += "}";
+        std::cout << "}";
 
-    std::cout << output << std::endl;
+    std::cout << std::endl;
 }
 
 template<typename First, typename ... Strings>

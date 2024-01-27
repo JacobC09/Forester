@@ -1,28 +1,29 @@
 #include "common.h"
 #include "raylib.h"
 #include "game.h"
-#include "textures.h"
+#include "assets.h"
 
+#include "debug.h"
 int main() {
     InitWindow(960, 540, "Window");
     SetConfigFlags(FLAG_MSAA_4X_HINT);
     SetTargetFPS(60);
-    LoadTextures();
+    LoadAssets();
 
     Game* game = new Game();
-
+    
     game->Init();
     
     while (!WindowShouldClose()) {
         game->Update();
 
         BeginDrawing();
-            ClearBackground(Color { 40, 181, 70, 255 });
+            ClearBackground(BLACK);
             game->Draw();
         EndDrawing();
     }
 
-    UnloadTextures();
+    UnloadAssets();
     CloseWindow();
 
     return 0;

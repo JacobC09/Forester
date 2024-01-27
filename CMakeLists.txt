@@ -7,6 +7,7 @@ project(MedivalCityBuilder)
 
 add_subdirectory("external/raylib")
 add_subdirectory("external/entt")
+add_subdirectory("external/tinyxml2")
 
 # == Executable == #
 
@@ -15,29 +16,31 @@ set(PRELOAD_ASSET_DIR "assets")
 add_executable(game 
     "src/main.cpp"
     "src/game.cpp"
-    "src/textures.cpp"
+    "src/assets.cpp"
     "src/systems.cpp"
     "src/animation.cpp"
+    "src/components.cpp"
+    "src/map.cpp"
+    "src/tmx.cpp"
     "src/entity/factory.cpp"
     "src/entity/render.cpp"
-)
+ )
 
-set(CMAKE_BUILD_TYPE Release)
+set(CMAKE_BUILD_TYPE Debug)
 set(BUILD_EXAMPLES OFF)
 
 target_include_directories(game PRIVATE "include")
 target_precompile_headers(game PUBLIC "include/common.h")
-target_link_libraries(game PRIVATE raylib EnTT::EnTT)
+target_link_libraries(game PRIVATE raylib tinyxml2 EnTT::EnTT)
 
-if (NOT MSVC)
-    target_compile_options(game PRIVATE -std=c++20 -Wall)
-else()
+if (MSVC)
     target_compile_options(game PRIVATE /std:c++20 /W3 /wd4244)
+else()
+    target_compile_options(game PRIVATE -std=c++20 -Wall)
 endif()
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-
 
 
 # == Copy Assets == #
